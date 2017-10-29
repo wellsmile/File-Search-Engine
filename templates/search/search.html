@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block button %}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" button class="btn btn-primary btn-lg active">HOME</button></a>
+{% endblock button %}
+
+{% block main %}
+	<form method="POST">
+		<h2>Search your files by its title or content</h2>
+		</br>
+		{% csrf_token %}
+
+		{% if messages %}
+			{% for message in messages %}
+				<div class="{{ message.tags }}">
+					{{ message|safe }}
+				</div>
+			{% endfor %}		
+		{% endif %}
+
+		<div class="form-group">
+			<label class="control-label" for="{{ form.file_title.id_for_label }}">File Title</label>
+			{% for error in form.file_title.errors %}
+				<div class="alert alert-danger" role="alert">
+					{{ error|safe }}
+				</div>
+			{% endfor %}
+			{{ form.file_title }}
+		</div>
+		
+		<button class="btn btn-primary btn-lg active" type="submit" name="byuserid">By TITLE</button>
+		</br></br>
+		<div class="form-group">
+			<label class="control-label" for="{{ form.file_content.id_for_label }}">File Content</label>
+			{% for error in form.file_content.errors %}
+				<div class="alert alert-danger" role="alert">
+					{{ error|safe }}
+				</div>
+			{% endfor %}
+			{{ form.file_content }}
+		</div>
+		
+		<button class="btn btn-primary btn-lg active" type="submit" name="byorderid">BY CONTENT</button>
+		<!-- <TABLE style="BORDER-RIGHT: 8px groove; BORDER-BOTTOM: 8px groove" height=100 cellSpacing=5 cellPadding=2 width=500 border=7 rules=all> -->
+		</br></br></br>List of eligible documents</br>
+		<TABLE class="table table-bordered">
+			<tr>
+				<th>&nbsp;title&nbsp;</th>
+				<th>&nbsp;create date&nbsp;</th>
+				<th>&nbsp;path on disk&nbsp;</th>
+				<th>&nbsp;content&nbsp;</th>
+			</tr>
+				<tr>
+				<td>{{ sdkuser.id }}</td>
+				<td>{{ sdkuser.username }}</td>
+				<td>{{ sdkuser.phone }}</td>
+				<td>{{ sdkuser.phone }}</td>
+				</tr>
+		</TABLE>
+		
+		
+	</form>
+{% endblock main %}
