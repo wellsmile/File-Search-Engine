@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from elasticsearch import Elasticsearch
+ES = Elasticsearch()
+# ES_INDEX = 'test_1018_03'
+ES_INDEX = 'product_1106'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +30,7 @@ SECRET_KEY = '-#$(yyii#6u0q+7zc@hu2k-b6a4utti-#ms4m3#h+m-1u2l5ny'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.23.7.82']
 
 
 # Application definition

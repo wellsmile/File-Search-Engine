@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>CXC-FSSE</title>
+		<title>FSSE</title>
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -16,6 +16,11 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
 		{% block js %}{% endblock js %}
+			<style>
+        mark {
+             background-color:#00ff90; font-weight:bold;
+        }
+     </style>
 	</head>
 
 	<body>
@@ -23,19 +28,23 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				</br></br><FONT SIZE="7" COLOR="6699cc" FACE="黑体">File Server Search Engine</FONT></br>
-				<FONT SIZE="5" COLOR="6699cc" FACE="黑体">(base on elasticsearch)</FONT></br></br>
+				<FONT SIZE="5" COLOR="6699cc" FACE="黑体">(base on elasticsearch)</FONT></br>
 				<hr />
-				<a href="#" button class="btn btn-primary btn-lg active">file uplode</button></a>
-				&nbsp;<a href="#" button class="btn btn-primary btn-lg active">file browse</button></a>
+				<a href="#" button class="btn btn-primary btn-lg active">file upload</button></a>
+				&nbsp;<a href="/browse/" button class="btn btn-primary btn-lg active">file browse</button></a>
 				&nbsp;<a href="/search/" button class="btn btn-primary btn-lg active">file search</button></a>
 				{% block button %}{% endblock button %}
 				{% if user.is_authenticated %}
 					<a href="/admin/logout/" button class="btn btn-lg active">log out{{ username }}</button></a>
 				{% endif %}
-				<hr />
+				<hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
 			</ul>
 		</div>
 		{% block main %}{% endblock main %}
 		</div>
 	</body>
+	{% block tail %}{% endblock tail %}
 </html>
+
+
+

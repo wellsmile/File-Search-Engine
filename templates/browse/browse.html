@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block button %}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" button class="btn btn-primary btn-lg active">HOME</button></a>
+{% endblock button %}
+
+{% block main %}
+		</br></br>List of documents</br>
+		<TABLE class="table table-bordered">
+			<tr>
+				<th>&nbsp;title&nbsp;</th>
+				<th>&nbsp;create date&nbsp;</th>
+				<th>&nbsp;filename&nbsp;</th>
+				<th>&nbsp;author&nbsp;</th>
+				<th>&nbsp;type&nbsp;</th>
+				<th>&nbsp;content&nbsp;</th>
+			</tr>
+				{% for result in result_list %}
+				<tr>
+				<td>{{ result.title }}</td>
+				<td>{{ result.date }}</td>
+				<td>{{ result.path }}</td>
+				<td>{{ result.author }}</td>
+				<td>{{ result.type }}</td>
+				<td>{{ result.content }}</td>
+				</tr>
+				{% endfor %}
+		</TABLE>
+		
+		
+	</form>
+{% endblock main %}
