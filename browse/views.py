@@ -14,11 +14,26 @@ def browse(request, template):
             result_one_obj_title = result_one['_source']['meta']['title']
         except KeyError:
             result_one_obj_title = '无法获取'
-        result_one_obj_date = result_one['_source']['meta']['created']
-        result_one_obj_path = result_one['_source']['path']['real']
-        result_one_obj_content = result_one['_source']['content'][0:50]
-        result_one_obj_author = result_one['_source']['meta']['author']
-        result_one_obj_type = result_one['_source']['file']['content_type']
+        try:    
+            result_one_obj_date = result_one['_source']['meta']['created']
+        except KeyError:
+            result_one_obj_date = '无法获取'
+        try:
+            result_one_obj_path = result_one['_source']['path']['real']
+        except KeyError:
+            result_one_obj_path = '无法获取'
+        try:
+            result_one_obj_author = result_one['_source']['meta']['author']
+        except KeyError:
+            result_one_obj_author = '无法获取'
+        try:
+            result_one_obj_type = result_one['_source']['file']['content_type']
+        except KeyError:
+            result_one_obj_type = '无法获取'
+        
+        show_len = 500 if len(result_one['_source']['content']) >= 500 else len(result_one['_source']['content'])
+        result_one_obj_content = result_one['_source']['content'][0:show_len]+'......'
+        
         result_one_obj = FileInfo(result_one_obj_title,
                                 result_one_obj_date,
                                 result_one_obj_path,

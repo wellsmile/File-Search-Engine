@@ -5,27 +5,27 @@
 {% endblock button %}
 
 {% block main %}
-		</br></br>List of documents</br>
-		<TABLE class="table table-bordered">
-			<tr>
-				<th>&nbsp;title&nbsp;</th>
-				<th>&nbsp;create date&nbsp;</th>
-				<th>&nbsp;filename&nbsp;</th>
-				<th>&nbsp;author&nbsp;</th>
-				<th>&nbsp;type&nbsp;</th>
-				<th>&nbsp;content&nbsp;</th>
-			</tr>
+		</br><h3>List of documents</h3>
+		<hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
 				{% for result in result_list %}
-				<tr>
-				<td>{{ result.title }}</td>
-				<td>{{ result.date }}</td>
-				<td>{{ result.path }}</td>
-				<td>{{ result.author }}</td>
-				<td>{{ result.type }}</td>
-				<td>{{ result.content }}</td>
-				</tr>
+				<TABLE class="table table-bordered  table-condensed">
+					<tr class="info">
+							<TABLE class="table  table-condensed">
+									<tr class="info">
+									<td style='text-align: center;'><h4>title</h4>{{ result.title }}</td>
+									<td style='text-align: center;'><h4>create date</h4>{{ result.date }}</td>
+									<td style='text-align: center;'><h4>filepath</h4>{{ result.path }}</td>
+									<td style='text-align: center;'><h4>author</h4>{{ result.author }}</td>
+									<td style='text-align: center;'><h4>type</h4>{{ result.type }}</td>
+									</tr>
+							</TABLE>
+					</tr>
+					<tr class="info">
+							<td>{{ result.content }}</td>
+					</tr>
+				</TABLE>
+				<hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
 				{% endfor %}
-		</TABLE>
 		
 		
 	</form>

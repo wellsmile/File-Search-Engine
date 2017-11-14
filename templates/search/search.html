@@ -107,7 +107,7 @@
 
 {% block main %}
 	<form method="POST">
-		<h2>Search your files by its title or content</h2>
+		<h2>Search your files by its any property</h2>
 		<h5>Enter at least one property for searching</h5>
 		</br>
 		{% csrf_token %}
@@ -164,26 +164,26 @@
 		<button class="btn btn-primary btn-lg active" type="submit" name="searching">SEARCHING NOW</button>
 		<!-- <TABLE style="BORDER-RIGHT: 8px groove; BORDER-BOTTOM: 8px groove" height=100 cellSpacing=5 cellPadding=2 width=500 border=7 rules=all> -->
 		</br></br></br>List of eligible documents</br>
-		<TABLE class="table table-bordered">
-			<tr>
-				<th>&nbsp;title&nbsp;</th>
-				<th>&nbsp;create date&nbsp;</th>
-				<th>&nbsp;filename&nbsp;</th>
-				<th>&nbsp;author&nbsp;</th>
-				<th>&nbsp;type&nbsp;</th>
-				<th>&nbsp;content&nbsp;</th>
+		<hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
+		{% for result in result_list %}
+		<TABLE class="table table-bordered  table-condensed">
+			<tr class="info">
+					<TABLE class="table  table-condensed">
+							<tr class="info">
+							<td style='text-align: center;'><h4>title</h4>{{ result.title }}</td>
+							<td style='text-align: center;'><h4>create date</h4>{{ result.date }}</td>
+							<td style='text-align: center;'><h4>filepath</h4>{{ result.path }}</td>
+							<td style='text-align: center;'><h4>author</h4>{{ result.author }}</td>
+							<td style='text-align: center;'><h4>type</h4>{{ result.type }}</td>
+							</tr>
+					</TABLE>
 			</tr>
-				{% for result in result_list %}
-				<tr>
-				<td>{{ result.title }}</td>
-				<td>{{ result.date }}</td>
-				<td>{{ result.path }}</td>
-				<td>{{ result.author }}</td>
-				<td>{{ result.type }}</td>
-				<td>{{ result.content }}</td>
-				</tr>
-				{% endfor %}
+			<tr class="info">
+					<td>{{ result.content }}</td>
+			</tr>
 		</TABLE>
+		<hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
+		{% endfor %}
 		
 		
 	</form>

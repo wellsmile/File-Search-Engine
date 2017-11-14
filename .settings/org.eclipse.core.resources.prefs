@@ -3,4 +3,5 @@ encoding//browse/urls.py=utf-8
 encoding//index/urls.py=utf-8
 encoding//search/forms.py=utf-8
 encoding//search/urls.py=utf-8
+encoding//uploads/forms.py=utf-8
 encoding//uploads/urls.py=utf-8

@@ -5,23 +5,36 @@
 {% endblock button %}
 
 {% block main %}
-		</br></br></br>List of documents</br>
-		<TABLE class="table table-bordered">
-			<tr>
-				<th>&nbsp;title&nbsp;</th>
-				<th>&nbsp;create date&nbsp;</th>
-				<th>&nbsp;filename&nbsp;</th>
-				<th>&nbsp;content&nbsp;</th>
-			</tr>
-				{% for result in result_list %}
-				<tr>
-				<td>{{ result.title }}</td>
-				<td>{{ result.date }}</td>
-				<td>{{ result.path }}</td>
-				<td>{{ result.content }}</td>
-				</tr>
-				{% endfor %}
-		</TABLE>
+
+	
+	
+	<form method="POST">
+		<h2>Choose your files to upload</h2>
+		<h5>That might need a moment</h5>
+		</br>
+		{% csrf_token %}
+
+		{% if messages %}
+			{% for message in messages %}
+				<div class="{{ message.tags }}">
+					{{ message|safe }}
+				</div>
+			{% endfor %}		
+		{% endif %}
+
+		<div class="form-group">
+			<label class="control-label" for="{{ form.file_path.id_for_label }}">File Choose</label>
+			{% for error in form.file_path.errors %}
+				<div class="alert alert-danger" role="alert">
+					{{ error|safe }}
+				</div>
+			{% endfor %}
+			{{ form.file_path }}
+		</div>
+		
+		
+		
+		<button class="btn btn-primary btn-lg active" type="submit" name="uploading">START UPLOAD</button>
 		
 		
 	</form>
